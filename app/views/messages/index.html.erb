@@ -1,0 +1,8 @@
+<%= form_tag 'http://107.170.152.141:9080/pub?id=furtively', method: :post, id: 'new-message' do %>
+  <%= text_field_tag :message, nil, id: 'new-message-text' %>
+  <%= submit_tag 'Send' %>
+<% end %>
+
+
+<section id="messages">
+</section>
