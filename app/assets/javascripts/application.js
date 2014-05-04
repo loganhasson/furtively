@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require pusher
+//= require medium
 //= require_tree .
