@@ -4,6 +4,16 @@ $(function(){
   function setUpNewMessage() {
     newMessageInput.attr('contentEditable', true);
 
+    newMessageInput.on('focus', function(event) {
+      window.setTimeout(function() {
+        $(event.target).text("");
+      });
+    });
+
+    newMessageInput.on('blur', function(event) {
+      $(event.target).text("Say something...");
+    });
+
     newMessageInput.keypress(function(event) {
       if (event.which == 13) {
         submitMessage(newMessageInput.text());
@@ -25,9 +35,11 @@ $(function(){
   };
 
   function submitMessage(message) {
-    $.post('http://107.170.152.141:9080/pub?id=furtively', message, function(data) {
-      newMessageInput.text("");
-    });
+    if (message.length != 0) {
+      $.post('http://107.170.152.141:9080/pub?id=furtively', message, function(data) {
+        newMessageInput.text("");
+      });
+    };
   };
 
   function messageReceived(text, id, channel) {
