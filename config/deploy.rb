@@ -23,9 +23,9 @@ namespace :deploy do
     run "if sudo kill -0 `cat #{shared_path}/pids/unicorn.pid`> /dev/null 2>&1; then sudo kill -9 `cat #{shared_path}/pids/unicorn.pid`; else echo 'Unicorn is not running'; fi"
   end
 
-  # task :symlink_api_credentials, :roles => :app do
-  #   run "sudo ln -nfs #{shared_path}/application.yml #{release_path}/config/application.yml"
-  # end
+  task :symlink_api_credentials, :roles => :app do
+    run "ln -nfs #{shared_path}/application.yml #{release_path}/config/application.yml"
+  end
 
   task :migrate, :roles => :app do
     run "cd #{current_path} && rake db:migrate RAILS_ENV=development"
@@ -40,4 +40,4 @@ end
 
 # before "deploy:update", "deploy:source_rvm"
 after "deploy:finalize_update", "deploy:kill_unicorn"
-before "deploy:restart", "deploy:migrate"
+before "deploy:restart", "deploy:symlink_api_credentials", "deploy:migrate"

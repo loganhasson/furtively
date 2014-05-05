@@ -36,6 +36,7 @@ gem 'spring',        group: :development
 gem 'pg'
 gem 'unicorn'
 gem 'capistrano', '~> 2.15.5'
+gem 'figaro', github: 'laserlemon/figaro', ref: 'e16f2d47f6516e8420ce21c9de76785d9f244bae'
 
 group :test, :development do
   gem "rspec-rails"
