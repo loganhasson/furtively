@@ -94,6 +94,13 @@
                     return fnFalse.call();
                 }
             },
+            isReturn: function(e, fnTrue, fnFalse){
+                if (e.which == 13) {
+                    return fnTrue.call();
+                } else {
+                    return fnFalse.call();
+                }
+            },
             isShift: function(e, fnTrue, fnFalse){
                 if(e.shiftKey){
                     return fnTrue.call();
@@ -426,6 +433,11 @@
                 }, function(){
                     cache.cmd = false;
                 });
+                utils.isReturn(e, function(){
+                    var message = me.settings.element.innerText;
+                    submitMessage(message);
+                    me.clear();
+                }, function(){});
                 utils.isShift(e, function(){
                     cache.shift = true;
                 }, function(){
@@ -624,6 +636,12 @@
             utils.removeEvent(settings.element, 'keyup', intercept.up);
             utils.removeEvent(settings.element, 'keydown', intercept.down);
             utils.removeEvent(settings.element, 'focus', intercept.focus);
+        };
+
+        this.clear = function(){
+            settings.element.innerHTML = '';
+            utils.html.placeholders();
+            settings.element.innerHTML = '';
         };
 
         init(userOpts);
