@@ -59,7 +59,7 @@ $(function(){
     var pushstream = new PushStream({
       host: '107.170.152.141',
       port: 9080,
-      modes: 'longpolling'
+      modes: 'websocket'
     });
 
     pushstream.onmessage = messageReceived;
