@@ -1,7 +1,7 @@
 div {
   font-family: 'Open Sans', sans-serif;
-  text-transform: uppercase;
-  font-weight: 700;
+  /*text-transform: form: uppercase;*/
+  /*font-weight: 700;*/
 }
 
 div.wrapper {
@@ -11,6 +11,7 @@ div.wrapper {
 }
 
 h1.title {
+  text-transform: uppercase;
   position: static;
   display: block;
   font-weight: 800;
@@ -23,6 +24,7 @@ h1.title {
 }
 
 div#new-message {
+  text-transform: uppercase;
   letter-spacing: 1px;
   min-height: 52px !important;
   border-bottom: 1px solid #eee;
@@ -32,5 +34,10 @@ div#new-message {
 }
 
 div.message {
-  font-weight: 400;
+  /*font-family: 'Lato', sans-serif;*/
+  /*font-size: 22px;*/
+  /*color: #333332;*/
+  /*background: #fff;*/
+  /*line-height: 1.45;*/
+  /*font-weight: 400;*/
 }
