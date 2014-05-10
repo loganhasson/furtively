@@ -1,3 +1,4 @@
+var $j = jQuery.noConflict();
 var placeholderText = "Say something...";
 
 function submitMessage(message) {
@@ -8,7 +9,7 @@ function submitMessage(message) {
   };
 };
   
-$(function(){
+$j(function(){
   // var newMessageInput = $('div#new-message');
   // var placeholderText = "Say something...";
   // var placeholderHTML = '<p contenteditable="false" class="new-message-placeholder">'+placeholderText+'</p>';
@@ -76,7 +77,7 @@ $(function(){
   // };
 
   function messageReceived(text, id, channel) {
-    $('section#messages').prepend('<div class="message"><p>' + text + '</p></div>');
+    $j('section#messages').prepend('<div class="message"><p>' + text + '</p></div>');
   };
 
   function setUpMedium() {
