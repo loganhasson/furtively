@@ -3,7 +3,7 @@ var placeholderText = "Say something...";
 
 function submitMessage(message) {
   if (message.length != 0 && message.trim().toLowerCase() != placeholderText.toLowerCase()) {
-    $j.post('http://107.170.152.141:9080/pub?id=furtively', message, function(data) {
+    $j.post('http://107.170.152.141:9080/pub?id=furtively', message.slice(0,-1), function(data) {
       // newMessageInput.html(placeholderHTML);
     });
   };
