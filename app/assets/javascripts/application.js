@@ -15,4 +15,5 @@
 //= require bootstrap
 //= require pusher
 //= require medium
+//= require prototype
 //= require_tree .
