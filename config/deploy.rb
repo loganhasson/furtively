@@ -35,5 +35,5 @@ namespace :deploy do
   end
 end
 
-after "deploy:finalize_update", "deploy:kill_unicorn"
-before "deploy:restart", "deploy:symlink_api_credentials", "deploy:migrate"
+after "deploy:finalize_update", "deploy:kill_unicorn", "deploy:symlink_api_credentials"
+before "deploy:restart", "deploy:migrate"
