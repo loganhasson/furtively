@@ -17,4 +17,5 @@
 //= require medium
 //= require prototype
 //= require moment.min
+//= require livestamp
 //= require_tree .

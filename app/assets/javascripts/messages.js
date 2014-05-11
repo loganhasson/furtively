@@ -77,7 +77,9 @@ $j(function(){
   // };
 
   function messageReceived(text, id, channel) {
-    $j('section#messages').prepend('<div class="message"><p>' + moment().fromNow() + ' ' + text + '</p></div>');
+    var timeReceived = new Date;
+    var liveTime = '<span data-livestamp="'+ timeReceived.getTime() + '"></span>';
+    $j('section#messages').prepend('<div class="message"><p>' + liveTime + text + '</p></div>');
   };
 
   function setUpMedium() {
