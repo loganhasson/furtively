@@ -16,4 +16,5 @@
 //= require pusher
 //= require medium
 //= require prototype
+//= require moment.min
 //= require_tree .

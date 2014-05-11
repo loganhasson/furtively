@@ -77,7 +77,7 @@ $j(function(){
   // };
 
   function messageReceived(text, id, channel) {
-    $j('section#messages').prepend('<div class="message"><p>' + text + '</p></div>');
+    $j('section#messages').prepend('<div class="message"><p>' + moment().fromNow() + ' ' + text + '</p></div>');
   };
 
   function setUpMedium() {
