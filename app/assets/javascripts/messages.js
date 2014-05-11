@@ -11,7 +11,7 @@ function submitMessage(message) {
 };
   
 $(function(){
-  // $.timeago.settings.refreshMillis = 1000;
+  $.timeago.settings.refreshMillis = 1000;
   // var newMessageInput = $('div#new-message');
   // var placeholderText = "Say something...";
   // var placeholderHTML = '<p contenteditable="false" class="new-message-placeholder">'+placeholderText+'</p>';
