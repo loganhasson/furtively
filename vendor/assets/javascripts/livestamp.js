@@ -1,5 +1,5 @@
 // Livestamp.js / v1.1.2 / (c) 2012 Matt Bradley / MIT License
-$j(function (plugin) {
+(function (plugin) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
     define(['jquery', 'moment'], plugin);
@@ -7,10 +7,10 @@ $j(function (plugin) {
     // Browser globals
     plugin(jQuery, moment);
   }
-}(function($j, moment) {
+}(function($, moment) {
   var updateInterval = 1e3,
       paused = false,
-      $livestamps = $j([]),
+      $livestamps = $([]),
 
   init = function() {
     livestampGlobal.resume();
@@ -26,7 +26,7 @@ $j(function (plugin) {
 
     timestamp = moment(timestamp);
     if (moment.isMoment(timestamp) && !isNaN(+timestamp)) {
-      var newData = $j.extend({ }, { 'original': $el.contents() }, oldData);
+      var newData = $.extend({ }, { 'original': $el.contents() }, oldData);
       newData.moment = moment(timestamp);
 
       $el.data('livestampdata', newData).empty();
@@ -42,8 +42,8 @@ $j(function (plugin) {
 
   livestampGlobal = {
     update: function() {
-      $j('[data-livestamp]').each(function() {
-        var $this = $j(this);
+      $('[data-livestamp]').each(function() {
+        var $this = $(this);
         prep($this, $this.data('livestamp'));
       });
 
@@ -95,7 +95,7 @@ $j(function (plugin) {
 
       if (moment.isMoment(timestamp) && !isNaN(+timestamp)) {
         $el.each(function() {
-          prep($j(this), timestamp);
+          prep($(this), timestamp);
         });
         livestampGlobal.update();
       }
@@ -106,7 +106,7 @@ $j(function (plugin) {
     destroy: function($el) {
       $livestamps = $livestamps.not($el);
       $el.each(function() {
-        var $this = $j(this),
+        var $this = $(this),
             data = $this.data('livestampdata');
 
         if (data === undefined)
@@ -125,9 +125,9 @@ $j(function (plugin) {
     }
   };
 
-  $j.livestamp = livestampGlobal;
-  $j(init);
-  $j.fn.livestamp = function(method, options) {
+  $.livestamp = livestampGlobal;
+  $(init);
+  $.fn.livestamp = function(method, options) {
     if (!livestampLocal[method]) {
       options = method;
       method = 'add';
