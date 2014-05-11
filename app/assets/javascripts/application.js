@@ -16,7 +16,7 @@
 //= require pusher
 //= require medium
 //= require prototype
-// require moment.min
-// require livestamp
-//= require jquery.timeago
+//= require moment.min
+//= require livestamp
+// require jquery.timeago
 //= require_tree .
