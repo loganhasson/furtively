@@ -10,7 +10,7 @@
 }(function($j, moment) {
   var updateInterval = 1e3,
       paused = false,
-      $livestamps = $j([]),
+      $livestamps = $([]),
 
   init = function() {
     livestampGlobal.resume();
