@@ -77,8 +77,8 @@ $j(function(){
   // };
 
   function messageReceived(text, id, channel) {
-    var timeReceived = new Date;
-    var liveTime = '<span data-livestamp="'+ timeReceived.getTime() + '"></span>';
+    var timeReceived = new Date - new Date(1970,1,1,0,0,0);
+    var liveTime = '<span data-livestamp="'+ timeReceived + '"></span>';
     $j('section#messages').prepend('<div class="message"><p>' + liveTime + text + '</p></div>');
   };
 
