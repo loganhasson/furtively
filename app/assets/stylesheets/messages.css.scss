@@ -45,4 +45,9 @@ div.message {
   white-space: -pre-wrap;     /* Opera <7 */   
   white-space: -o-pre-wrap;   /* Opera 7 */    
   word-wrap: break-word;      /* IE */
+  margin-bottom: 10px;
+
+  span.message-time {
+    float: right;
+  }
 }

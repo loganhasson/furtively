@@ -1,15 +1,17 @@
-var $j = jQuery.noConflict();
+// var $j = jQuery.noConflict();
+// TODO: Uncomment prototype.js and add .stripScripts(); to message
 var placeholderText = "Say something...";
 
 function submitMessage(message) {
-  if (message.stripScripts().length != 0 && message.trim().toLowerCase() != placeholderText.toLowerCase()) {
-    $j.post('http://107.170.152.141:9080/pub?id=furtively', message.slice(0,-1).stripScripts(), function(data) {
+  if (message.length != 0 && message.trim().toLowerCase() != placeholderText.toLowerCase()) {
+    $.post('http://107.170.152.141:9080/pub?id=furtively', message.slice(0,-1), function(data) {
       // newMessageInput.html(placeholderHTML);
     });
   };
 };
   
-$j(function(){
+$(function(){
+  $.timeago.settings.refreshMillis = 1000;
   // var newMessageInput = $('div#new-message');
   // var placeholderText = "Say something...";
   // var placeholderHTML = '<p contenteditable="false" class="new-message-placeholder">'+placeholderText+'</p>';
@@ -77,9 +79,16 @@ $j(function(){
   // };
 
   function messageReceived(text, id, channel) {
-    var timeReceived = new Date - new Date(1970,1,1,0,0,0);
-    var liveTime = '<span data-livestamp="'+ timeReceived + '"></span>';
-    $j('section#messages').prepend('<div class="message"><p>' + liveTime + text + '</p></div>');
+    // var timeReceived = new Date(1970,1,1,0,0,0) - new Date;
+    // var liveTime = '<span data-livestamp="'+ timeReceived + '"></span>';
+    var timeReceived = new Date;
+    var liveTime = '<time class="timeago" id="message-time-' + id + '" datetime="' + timeReceived.toISOString() + '"></time>';
+    $('section#messages').prepend('<div class="message" id="message-'+id+'"><span class="message-text">' + text + '</span><span class="message-time">' + liveTime +'</span></div>');
+
+    var newMessage = $('div#message-'+id);
+    newMessage.hide();
+    $('time#message-time-'+id).timeago();
+    newMessage.fadeIn();
   };
 
   function setUpMedium() {
