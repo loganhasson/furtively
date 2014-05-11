@@ -11,7 +11,7 @@ function submitMessage(message) {
 };
   
 $(function(){
-  $.timeago.settings.refreshMillis = 1000;
+  // $.timeago.settings.refreshMillis = 1000;
   // var newMessageInput = $('div#new-message');
   // var placeholderText = "Say something...";
   // var placeholderHTML = '<p contenteditable="false" class="new-message-placeholder">'+placeholderText+'</p>';
@@ -82,11 +82,17 @@ $(function(){
     // var timeReceived = new Date(1970,1,1,0,0,0) - new Date;
     // var liveTime = '<span data-livestamp="'+ timeReceived + '"></span>';
     var timeReceived = new Date;
-    var liveTime = '<time class="timeago" id="message-time-' + id + '" datetime="' + timeReceived.toISOString() + '"></time>';
-    $('section#messages').prepend('<div class="message" id="message-'+id+'"><span class="message-text">' + text + '</span><span class="message-time">' + liveTime +'</span></div>');
+    var liveTime = '<time class="timeago" id="message-time-' +
+          id + '" datetime="' + timeReceived.toISOString() + '"></time>';
+    $('section#messages').prepend(
+      '<div class="message" id="message-'+
+      id + '"><span class="message-text">' + text +
+      '</span><span class="message-time">' + liveTime +'</span></div>');
 
     var newMessage = $('div#message-'+id);
+    
     newMessage.hide();
+    
     $('time#message-time-'+id).timeago();
     newMessage.fadeIn();
   };

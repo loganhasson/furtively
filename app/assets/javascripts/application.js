@@ -18,5 +18,5 @@
 //= require prototype
 //= require moment.min
 //= require livestamp
-// require jquery.timeago
+//= require jquery.timeago
 //= require_tree .
