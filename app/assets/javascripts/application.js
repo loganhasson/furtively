@@ -15,7 +15,7 @@
 //= require bootstrap
 //= require pusher
 //= require medium
-//= require prototype
+// require prototype
 //= require moment.min
 //= require livestamp
 //= require jquery.timeago
