@@ -19,4 +19,5 @@
 //= require moment.min
 //= require livestamp
 //= require jquery.timeago
+//= typekit
 //= require_tree .

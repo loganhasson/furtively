@@ -12,51 +12,6 @@ function submitMessage(message) {
   
 $(function(){
   $.timeago.settings.refreshMillis = 10000;
-  // var newMessageInput = $('div#new-message');
-  // var placeholderText = "Say something...";
-  // var placeholderHTML = '<p contenteditable="false" class="new-message-placeholder">'+placeholderText+'</p>';
-
-  // function setUpNewMessage() {
-
-  //   function setPlaceholderOnDelete(event) {
-  //     if ((event.which == 8 || event.which == 46) && ($(this).text() == "")) {
-  //       $(event.target).html(placeholderHTML);
-  //     };
-  //   };
-
-  //   newMessageInput.attr('contentEditable', true);
-
-    // newMessageInput.on('focus', function(event) {
-    //   window.setTimeout(function() {
-    //     $(event.target).text("");
-    //   });
-    // });
-
-  //   newMessageInput.on({
-  //     blur: function(event) {
-  //       if ($(this).text() == "") {
-  //         $(event.target).html(placeholderHTML);
-  //       };
-  //     },
-
-  //     keypress: function(event) {
-  //       var placeholder = $('div#new-message p.new-message-placeholder');
-
-  //       if (event.which == 13) {
-  //         submitMessage($(this).text());
-  //         event.preventDefault();
-  //       } else if (placeholder) {
-  //         placeholder.remove();
-  //       };
-  //     },
-
-  //     keyup: function(event) {
-  //       if ((event.which == 8 || event.which == 46) && ($(this).text() == "")) {
-  //         $(event.target).html(placeholderHTML);
-  //       };
-  //     }
-  //   });
-  // };
 
   function setUpPushStream() {
     var pushstream = new PushStream({
@@ -70,17 +25,15 @@ $(function(){
     pushstream.connect();
   };
 
-  // function submitMessage(message) {
-  //   if (message.length != 0 && message != placeholderText) {
-  //     $.post('http://107.170.152.141:9080/pub?id=furtively', message, function(data) {
-  //       newMessageInput.html(placeholderHTML);
-  //     });
-  //   };
-  // };
-
   function messageReceived(text, id, channel) {
-    // var timeReceived = new Date(1970,1,1,0,0,0) - new Date;
-    // var liveTime = '<span data-livestamp="'+ timeReceived + '"></span>';
+    var firstMessageColor = $('span.message-text').first().css("background-color");
+    var newMessageColor = "";
+    if (firstMessageColor === undefined || firstMessageColor === "rgba(0, 0, 0, 0)") {
+      newMessageColor = "#ccc";
+    } else {
+      newMessageColor = "rgba(0, 0, 0, 0)";
+    };
+
     var timeReceived = new Date;
     var liveTime = '<time class="timeago" id="message-time-' +
           id + '" datetime="' + timeReceived.toISOString() + '"></time>';
@@ -92,7 +45,7 @@ $(function(){
     var newMessage = $('div#message-'+id);
     
     newMessage.hide();
-    
+    $('span.message-text').first().css("background-color", newMessageColor);
     $('time#message-time-'+id).timeago();
     newMessage.fadeIn();
   };
@@ -108,7 +61,6 @@ $(function(){
     });
   };
   
-  // setUpNewMessage();
   setUpPushStream();
   setUpMedium();
 });
