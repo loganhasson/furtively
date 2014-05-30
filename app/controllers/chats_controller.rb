@@ -1,6 +1,6 @@
 class ChatsController < ApplicationController
   def show
-    @chat = Chat.find_by(uuid: params[:id])
+    @chat = Chat.find_by(uuid: params[:uuid])
     respond_to do |format|
       if !@chat
         format.js { render 'invalid_chat'}
