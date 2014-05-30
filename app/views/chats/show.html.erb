@@ -1,2 +1,15 @@
-$(body).html(<%= j render 'valid_chat' %>);
-$(document).ready();
+<div class="global-chat">
+  <span class="global-chat-button">Back to the Real World?</span>
+</div>
+<div class="wrapper">
+  <header>
+    <h1 class="title">Furtive.ly</h1>
+    <div id="subscriber-count"></div>
+    <div id="chat-room-link">http://furtive.ly/<%= @chat.uuid %></div>
+    <div id="channel-id" data-id="<%= @chat.uuid %>"></div>
+  </header>
+  <div id="new-message"></div>
+  <section id="messages">
+    <div id="bottom-fade"></div>
+  </section>
+</div>
