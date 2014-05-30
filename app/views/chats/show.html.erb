@@ -1,11 +1,12 @@
-<div class="get-some-privacy">
-  <span class="new-chat-button">Want Some Privacy?</span>
+<div class="global-chat">
+  <span class="global-chat-button">Back to the Real World?</span>
 </div>
 <div class="wrapper">
   <header>
     <h1 class="title">Furtive.ly</h1>
     <div id="subscriber-count"></div>
-    <div id="channel-id" data-id="furtively"></div>
+    <div id="chat-room-link">http://furtive.ly/<%= @chat.uuid %></div>
+    <div id="channel-id" data-id="<%= @chat.uuid %>"></div>
   </header>
   <div id="new-message"></div>
   <section id="messages">

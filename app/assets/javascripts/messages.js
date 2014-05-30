@@ -98,9 +98,23 @@ $(function(){
       });
     }, 5000);
   };
+
+  function setUpPrivacyButton() {
+    $(document).on('click', 'div.get-some-privacy', function(e){
+      e.preventDefault();
+      $.ajax({
+        url: "/chats/new",
+        dataType: "json",
+        success: function(response){
+          window.location.replace("http://furtive.ly/"+response.uuid);
+        }
+      });
+    });
+  };
   
   setUpPushStream();
   setUpMedium();
   updateSubscriberCount();
+  setUpPrivacyButton();
   $('div#new-message').focus();
 });
