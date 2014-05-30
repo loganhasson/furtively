@@ -18,3 +18,16 @@ span.global-chat-button {
     border-color: grey;
   }
 }
+
+header.private-chat-header {
+  max-height: 100px;
+  min-height: 100px;
+}
+
+div#chat-room-link {
+  font-size: 16px;
+  text-align: center;
+  padding: 5px;
+  line-height: 1.5em;
+  margin-bottom: 5px;
+}

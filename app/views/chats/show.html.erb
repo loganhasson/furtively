@@ -2,10 +2,10 @@
   <span class="global-chat-button">Back to the Real World?</span>
 </div>
 <div class="wrapper">
-  <header>
+  <header class="private-chat-header">
     <h1 class="title">Furtive.ly</h1>
+    <div id="chat-room-link">Your Personal Chatroom Link to Share <strong>http://furtive.ly/chats/<%= @chat.uuid %></strong></div>
     <div id="subscriber-count"></div>
-    <div id="chat-room-link">http://furtive.ly/<%= @chat.uuid %></div>
     <div id="channel-id" data-id="<%= @chat.uuid %>"></div>
   </header>
   <div id="new-message"></div>
