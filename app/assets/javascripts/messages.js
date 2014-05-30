@@ -1,5 +1,8 @@
-// var $j = jQuery.noConflict();
-// TODO: Uncomment prototype.js and add .stripScripts(); to message
+// TODO: Options for font weight
+// TODO: Option to auto scroll to top when new message arrives
+// TODO: Private room
+// TODO: Add user count
+
 var placeholderText = "Say something...";
 
 function submitMessage(message) {
@@ -25,7 +28,16 @@ $(function(){
     pushstream.connect();
   };
 
+  // function checkIfScrolledDown(){
+  //   var messagesDiv = $('section#messages');
+  //   if (messagesDiv.scrollTop() > 30) {
+      // TODO: Turn on overflow: hidden in messages section
+      // TODO: Display "scroll to Top"
+  //   }
+  // };
+
   function messageReceived(text, id, channel) {
+    // checkIfScrolledDown();
     var firstMessageColor = $('span.message-text').first().css("background-color");
     var newMessageColor = "";
     if (firstMessageColor === undefined || firstMessageColor === "rgba(0, 0, 0, 0)") {
@@ -45,6 +57,10 @@ $(function(){
     var newMessage = $('div#message-'+id);
     
     newMessage.hide();
+    var messageCount = $('div.message').size();
+    if (messageCount > 15) {
+      $('div.message:last').remove();
+    };
     $('span.message-text').first().css("background-color", newMessageColor);
     $('time#message-time-'+id).timeago();
     newMessage.fadeIn();
@@ -60,7 +76,25 @@ $(function(){
       maxLength: 140
     });
   };
+
+  function updateSubscriberCountText(subCount) {
+    $('div#subscriber-count').text("People Connected: " + subCount);
+  };
+
+  function updateSubscriberCount() {
+    setTimeout(function(){
+      $.ajax({
+        url: "http://107.170.152.141:9080/pub?id=furtively",
+        success: function(stats){
+          updateSubscriberCountText(stats.subscribers);
+          updateSubscriberCount();
+        },
+        dataType: "json"
+      });
+    }, 5000);
+  };
   
   setUpPushStream();
   setUpMedium();
+  updateSubscriberCount();
 });

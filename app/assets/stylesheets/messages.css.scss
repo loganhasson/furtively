@@ -1,16 +1,27 @@
+//= depend_on_asset "bottom-fade.png"
+
 div {
   font-family: 'Open Sans', sans-serif;
 }
 
+body {
+  overflow: hidden;
+}
+
 section#messages {
-  max-height: 500px;
-  overflow: auto;
+  max-height: 600px;
+  overflow: hidden;
 }
 
 div.wrapper {
   width: 500px;
   margin: 0 auto;
   padding-bottom: 20px;
+}
+
+header {
+  max-height: 70px;
+  min-height: 70px;
 }
 
 h1.title {
@@ -24,6 +35,13 @@ h1.title {
   font-size: 46px;
   color: #333;
   margin-top: 50px;
+  margin-bottom: 0;
+}
+
+div#subscriber-count {
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 30.82px;
 }
 
 div#new-message {
@@ -67,4 +85,13 @@ div.message {
     text-align: right;
     padding-top: 0.55rem;
   }
+}
+
+div#bottom-fade {
+  width: 500px;
+  height: 200px;
+  z-index: 99;
+  position: fixed;
+  bottom: 0px;
+  background: image-url("bottom-fade.png") bottom center no-repeat;
 }
