@@ -100,7 +100,7 @@ $(function(){
   };
 
   function setUpPrivacyButton() {
-    $(document).on('click', 'div.get-some-privacy', function(e){
+    $(document).on('click touchend', 'div.get-some-privacy', function(e){
       e.preventDefault();
       $.ajax({
         url: "/chats/new",
