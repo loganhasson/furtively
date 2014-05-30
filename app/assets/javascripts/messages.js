@@ -5,9 +5,14 @@
 
 var placeholderText = "Say something...";
 
+function getChannelName() {
+  var channel = $('div#channel-id').attr("data-id");
+  return channel;
+}
+
 function submitMessage(message) {
   if (message.length != 0 && message.trim().toLowerCase() != placeholderText.toLowerCase()) {
-    $.post('http://107.170.152.141:9080/pub?id=furtively', message.slice(0,-1), function(data) {
+    $.post('http://107.170.152.141:9080/pub?id='+getChannelName(), message.slice(0,-1), function(data) {
       // newMessageInput.html(placeholderHTML);
     });
   };
@@ -24,7 +29,7 @@ $(function(){
     });
 
     pushstream.onmessage = messageReceived;
-    pushstream.addChannel('furtively');
+    pushstream.addChannel(getChannelName());
     pushstream.connect();
   };
 
@@ -84,7 +89,7 @@ $(function(){
   function updateSubscriberCount() {
     setTimeout(function(){
       $.ajax({
-        url: "http://107.170.152.141:9080/pub?id=furtively",
+        url: "http://107.170.152.141:9080/pub?id="+getChannelName(),
         success: function(stats){
           updateSubscriberCountText(stats.subscribers);
           updateSubscriberCount();
