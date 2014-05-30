@@ -97,4 +97,5 @@ $(function(){
   setUpPushStream();
   setUpMedium();
   updateSubscriberCount();
+  $('div#new-message').focus();
 });
