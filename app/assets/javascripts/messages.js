@@ -1,7 +1,7 @@
 // TODO: Options for font weight
 // TODO: Option to auto scroll to top when new message arrives
 // TODO: Private room
-// TODO: Add user count
+// TODO: Rethink max length of message?
 
 var placeholderText = "Say something...";
 
