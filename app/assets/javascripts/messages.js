@@ -106,7 +106,7 @@ $(function(){
         url: "/chats/new",
         dataType: "json",
         success: function(response){
-          window.location.replace("http://furtive.ly/"+response.uuid);
+          window.location.replace("http://furtive.ly/chats/"+response.uuid);
         }
       });
     });
