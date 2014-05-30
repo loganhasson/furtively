@@ -1,8 +1,12 @@
 class ChatsController < ApplicationController
   def show
     @chat = Chat.find_by(id: params[:id])
-    if !@chat
-      redirect_to root_path
+    respond_to do |format|
+      if !@chat
+        format.js { render 'invalid_chat'}
+      else
+        format.js
+      end
     end
   end
 
