@@ -106,7 +106,7 @@ $(function(){
         url: "/chats/new",
         dataType: "json",
         success: function(response){
-          $.get('/chats/'+response.uuid, function(){
+          $.getScript('/chats/'+response.uuid, function(){
           });
         }
       });
