@@ -17,7 +17,7 @@ function submitMessage(message) {
     });
   };
 };
-  
+
 $(function(){
   $.timeago.settings.refreshMillis = 10000;
 
@@ -56,11 +56,11 @@ $(function(){
           id + '" datetime="' + timeReceived.toISOString() + '"></time>';
     $('section#messages').prepend(
       '<div class="message" id="message-'+
-      id + '"><span class="message-text">' + text +
+      id + '"><span class="message-text" style="padding-left: 7px;">' + text +
       '</span><span class="message-time">' + liveTime +'</span></div>');
 
     var newMessage = $('div#message-'+id);
-    
+
     newMessage.hide();
     var messageCount = $('div.message').size();
     if (messageCount > 15) {
@@ -111,7 +111,7 @@ $(function(){
       });
     });
   };
-  
+
   setUpPushStream();
   setUpMedium();
   updateSubscriberCount();
